@@ -1,0 +1,92 @@
+==================================================First Device Driver=====================================
+
+
+
+=========================================================Module Information=============================
+
+    License
+    Author
+    Module Description
+    Module Version
+
+These all informations are present in the linux/module.h as a macros.
+
+
+
+=========================================================License===================
+
+GPL, or the GNU General Public License, is an open source license meant for software. If your software is licensed under the terms of the GPL, it is free. However, “free” here does not essentially mean freeware—it can also be a paid software. Instead, “free” as per the GPL means freedom. As proponents of GPL proudly proclaim, free as in freedom, not free beer.
+
+The following license idents are currently accepted as indicating free software modules.
+
+"GPL" [GNU Public License v2 or later]
+
+"GPL v2" [GNU Public License v2]
+
+"GPL and additional rights" [GNU Public License v2 rights and more]
+
+"Dual BSD/GPL" [GNU Public License v2 or BSD license choice]
+
+"Dual MIT/GPL" [GNU Public License v2 or MIT license choice]
+
+"Dual MPL/GPL" [GNU Public License v2 or Mozilla license choice]
+
+The following other idents are available
+
+"Proprietary" [Non free products]
+
+There are dual licensed components, but when running with Linux it is the GPL that is relevant so this is a non issue. Similarly LGPL linked with GPL is a GPL combined work.
+
+This exists for several reasons,
+
+    modinfo can show license info for users wanting to vet their setup is free
+    The community can ignore bug reports including proprietary modules
+    Vendors can do likewise based on their own policies
+
+We can give the License for our driver (module) like below. For this you need to include the Linux/module.h header file.
+
+
+
+
+
+==============================================Author===============================
+
+Using this Macro we can mention that who is wrote this driver or module. So modinfo can show author name for users wanting to know. We can give the Author name for our driver (module) like below. For this you need to include the Linux/module.h header file.
+
+MODULE_AUTHOR("Author");
+
+Note: Use “Name <email>” or just “Name”, for multiple authors use multiple MODULE_AUTHOR() statements/lines.
+
+
+
+
+
+==============================Module Description=================================
+
+Using this Macro we can give the description of the module or driver. So modinfo can show module description for users wanting to know. We can give the description for our driver (module) like below. For this you need to include the linux/module.h header file.
+
+MODULE_DESCRIPTION("A sample driver");
+
+
+
+
+
+==============================================Module Version=====================================
+
+Using this Macro we can give the version of the module or driver. So modinfo can show module version for users wanting to know.
+
+Version of form [<epoch>:]<version>[-<extra-version>].
+
+<epoch>: A (small) unsigned integer which allows you to start versions anew. If not mentioned, it’s zero. eg. “2:1.0” is after “1:2.0”.
+
+<version>: The <version> may contain only alphanumerics and the character `.’. Ordered by numeric sort for numeric parts, ascii sort for ascii parts (as per RPM or DEB algorithm).
+
+<extraversion>: Like <version>, but inserted for local customizations, eg “rh3” or “rusty1”.
+
+Example
+
+MODULE_VERSION("2:1.0");
+
+
+
+
