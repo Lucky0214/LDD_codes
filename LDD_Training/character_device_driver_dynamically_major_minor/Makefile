@@ -1,7 +1,5 @@
 
-obj-m :=Hello_world.o
-
-value=$(shell export 10)
+obj-m :=character_device_driver_dynamically_major_minor.o
 
 
 KDIR = /lib/modules/$(shell uname -r)/build

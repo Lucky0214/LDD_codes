@@ -1,0 +1,2 @@
+/home/vvdn/Documents/c_developer/LDD/LDD_codes/LDD_Training/character_device_driver_major_minor/Character_device_driver_major_minor.ko
+/home/vvdn/Documents/c_developer/LDD/LDD_codes/LDD_Training/character_device_driver_major_minor/Character_device_driver_major_minor.o

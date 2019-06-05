@@ -5,6 +5,8 @@
 
 static int __init hello_world_init(void)
 {
+	int value =0;
+	printk(KERN_INFO "value %d \n", value);
         printk(KERN_INFO "This is the Simple Module\n");
         printk(KERN_INFO "Kernel Module Inserted Successfully...\n");
 	return 0;
