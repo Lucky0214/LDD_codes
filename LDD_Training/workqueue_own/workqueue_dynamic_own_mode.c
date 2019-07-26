@@ -17,23 +17,32 @@
 
 
 
+/* Work structure */
 
-void workqueue_fn(struct work_struct *work);
+static struct workqueue_struct *own_workqueue;
 
-/*Creating work by the static method*/
+static void workqueue_fn(struct work_struct *work);
 
-DECLARE_WORK(workqueue, workqueue_fn);
+static DECLARE_WORK(work, workqueue_fn);
 
-void workqueue_fn(struct work_struct *work){
+//static struct work_struct workqueue;
+
+//void workqueue_fn(struct work_struct *work);
+
+static void workqueue_fn(struct work_struct *work){
 
 	printk(KERN_INFO "EXECUTING WORK FUNCTION SUCCESSFULLY..............!!!!\n");
+	return;
 }
+
+
 
 //Interrupt handler for IRQ_NO 11
 
 static irqreturn_t irq_handler(int irq, void *dev_id){
 	printk(KERN_INFO "SHARED IRQ : INTERRUPT OCCURED");
-	schedule_work(&workqueue);
+	//schedule_work(&workqueue);
+	queue_work(own_workqueue, &work);
 	return IRQ_HANDLED;
 }
 
@@ -161,6 +170,10 @@ static int __init hello_driver_init(void){
             printk(KERN_INFO "my_device: cannot register IRQ ");
                     goto irq;
         }
+	
+	/*Creating workqueue */
+        own_workqueue = create_workqueue("own_wq");
+
         printk(KERN_INFO "Device Driver Insert...Done!!!\n");
     return 0;
  
@@ -181,7 +194,9 @@ r_class:
  
 void __exit hello_driver_exit(void)
 {
-        free_irq(IRQ_NO,(void *)(irq_handler));
+        /* Delete workqueue */
+        destroy_workqueue(own_workqueue);
+	free_irq(IRQ_NO,(void *)(irq_handler));
         kobject_put(kobj_ref); 
         sysfs_remove_file(kernel_kobj, &hello_attr.attr);
         device_destroy(dev_class,dev);
@@ -196,6 +211,6 @@ module_exit(hello_driver_exit);
  
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Himanshu Gupta");
-MODULE_DESCRIPTION("A simple device driver - WORKQUEUE STATIC METHOD");
-MODULE_VERSION("1.10");
+MODULE_DESCRIPTION("A simple device driver -OWN WORKQUEUE");
+MODULE_VERSION("1.12");
 
