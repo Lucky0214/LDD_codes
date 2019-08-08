@@ -1,2 +1,0 @@
-/home/vvdn/Documents/c_developer/LDD/LDD_codes/LDD_Training/full_driver_code/full_driver_code.ko
-/home/vvdn/Documents/c_developer/LDD/LDD_codes/LDD_Training/full_driver_code/full_driver_code.o
