@@ -5,7 +5,7 @@
  
 
 /**********************MKDEV function initialized major number and minor number********************/
-dev_t dev = MKDEV(235, 0);
+dev_t dev = MKDEV(4095, 1048576);
 
 
 static int __init hello_world_init(void)
